@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "nodenext",
+        "module": "nodenext",
+        "target": "es2022",
+        "lib": [
+            "es2022",
+            "dom"
+        ],
+        "types": [
+            "node",
+            "@wdio/globals/types",
+            "expect-webdriverio",
+            "@wdio/mocha-framework",
+            "webdriverio",
+            "@types/mocha",
+        ],
+        "skipLibCheck": true,
+        "noEmit": true,
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
+    },
+    "include": [
+        "__tests__/**/*.ts",
+        "wdio.conf.ts",
+        "page_objects/**/*.ts"
+    ]
+}
