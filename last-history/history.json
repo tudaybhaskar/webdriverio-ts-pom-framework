@@ -1,0 +1,1 @@
+{"017551b5aaca8648ffe5c40f7a666c68":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"1a7088808c3e0497","reportUrl":"https://tudaybhaskar.github.io/webdriverio-ts-pom-framework/3/#testresult/1a7088808c3e0497","status":"passed","time":{"start":1769103659941,"stop":1769103660771,"duration":830}}]}}
