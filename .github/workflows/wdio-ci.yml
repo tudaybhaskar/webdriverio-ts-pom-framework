@@ -1,8 +1,11 @@
 name: E2E Tests
-on: [push, pull_request]
+on: [push, pull_request,workflow_dispatch]
+
 
 permissions:
   contents: write # Required to publish the report to GitHub Pages
+  pages: write
+  id-token: write
 
 jobs:
   test:
@@ -24,17 +27,23 @@ jobs:
         run: npm run wdio # Ensure this script generates 'allure-results' folder
         continue-on-error: true # Crucial: Allows report generation even if tests fail
 
-      - name: Get Allure History
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
+      - name: Upload Allure Results as artifacts
+        uses: actions/upload-artifact@v4
         with: 
-          allure-results: allure_results
-          allure_history: allure_history
+          name: allure_results
+          path: allure_results
+          retention-days: 2
+      
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: allure-results
+          allure_history: allure-history
           keep_reports: 20
 
       - name: Deploy Report to Github Pages
-        if: always()
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
