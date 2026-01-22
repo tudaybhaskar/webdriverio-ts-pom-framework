@@ -31,14 +31,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with: 
           name: allure_results
-          path: allure_results
+          path: allure-results
           retention-days: 2
       
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          allure_results: allure-results
+          allure_results: allure_results
           allure_history: allure-history
           keep_reports: 20
 
